@@ -1,0 +1,75 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
+@import url(../scrollbar.css);
+@import url(../colors.css);
+
+body {
+    background-color: #171717;
+    font-family: "Inter", sans-serif;
+    margin: 45px 16px 0px;
+}
+
+h1 {
+    color: var(--white-color);
+    font-size: 10vw;
+    margin-bottom: 5px;
+}
+
+.directions {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+}
+
+.directions > p {
+    color: var(--white-color);
+    font-size: 4vw;
+}
+
+/* Timetable section */
+
+.timetable {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    background-color: var(--odin);
+    color: var(--white-color);
+    padding: 6px;
+    border-radius: 10px;
+}
+
+.directionAndTimeLeft {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    /* display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2vw; */
+}
+
+.direction,
+.timeLeft {
+    font-size: 3vw;
+    padding: 3px 5px;
+    background-color: var(--background-secondary);
+    border-radius: 6px;
+}
+
+.timeLeft {
+    text-align: end;
+}
+
+.time {
+    font-size: 7vw;
+    font-weight: 600;
+    margin-top: 5px;
+}

@@ -1,0 +1,46 @@
+export const weekDays = [
+    {
+        direction: "Молодёж.",
+        time: "06:30",
+        color: "#006DFF",
+        hours: 20,
+        minutes: 30,
+    },
+    {direction: "-", time: "-", color: "#006DFF", hours: "", minutes: ""},
+    {
+        direction: "Одинцово",
+        time: "06:45",
+        color: "#202020",
+        hours: 20,
+        minutes: 40,
+    },
+    {
+        direction: "Одинцово",
+        time: "По приб.",
+        color: "#202020",
+        hours: 20,
+        minutes: 45,
+    },
+    {
+        direction: "Молодёж.",
+        time: "07:00",
+        color: "#006DFF",
+        hours: 20,
+        minutes: 50,
+    },
+    {direction: "-", time: "-", color: "#006DFF", hours: "", minutes: ""},
+    {
+        direction: "Одинцово",
+        time: "07:20",
+        color: "#202020",
+        hours: 21,
+        minutes: 0,
+    },
+    {
+        direction: "Одинцово",
+        time: "По приб.",
+        color: "#202020",
+        hours: 21,
+        minutes: 5,
+    },
+];
