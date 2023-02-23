@@ -9,7 +9,7 @@ function getTimetable() {
             output += `<div style="background-color:${weekDay.color}" class="card">
             <div class="directionAndTimeLeft">
                 <div class="direction">${weekDay.direction}</div>
-                <div class="timeLeft"></div>
+                <div style="visibility: hidden" class="timeLeft"></div>
             </div>
             <div class="time">${weekDay.time}</div>
         </div>`;
