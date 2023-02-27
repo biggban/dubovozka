@@ -6,7 +6,6 @@ export const weekDays = [
         hours: 6,
         minutes: 30,
     },
-    {direction: "--", time: "--", color: "#006DFF", hours: "", minutes: ""},
     {
         direction: "Одинцово",
         time: "06:45",
@@ -28,7 +27,6 @@ export const weekDays = [
         hours: 7,
         minutes: 0,
     },
-    {direction: "--", time: "--", color: "#006DFF", hours: "", minutes: ""},
     {
         direction: "Одинцово",
         time: "07:20",
@@ -92,7 +90,6 @@ export const weekDays = [
         hours: 7,
         minutes: 55,
     },
-    {direction: "--", time: "--", color: "#006DFF", hours: "", minutes: ""},
     {
         direction: "Молодёж.",
         time: "07:55",
@@ -100,7 +97,6 @@ export const weekDays = [
         hours: 7,
         minutes: 55,
     },
-    {direction: "--", time: "--", color: "#006DFF", hours: "", minutes: ""},
     {
         direction: "Молодёж.",
         time: "08:05",
@@ -108,7 +104,6 @@ export const weekDays = [
         hours: 8,
         minutes: 5,
     },
-    {direction: "--", time: "--", color: "#006DFF", hours: "", minutes: ""},
     {
         direction: "Одинцово",
         time: "08:15",
@@ -130,7 +125,6 @@ export const weekDays = [
         hours: 8,
         minutes: 20,
     },
-    {direction: "--", time: "--", color: "#006DFF", hours: "", minutes: ""},
     {
         direction: "Молодёж.",
         time: "08:35",
@@ -138,7 +132,6 @@ export const weekDays = [
         hours: 8,
         minutes: 35,
     },
-    {direction: "--", time: "--", color: "#006DFF", hours: "", minutes: ""},
     {
         direction: "Одинцово",
         time: "08:45",
@@ -160,7 +153,6 @@ export const weekDays = [
         hours: 8,
         minutes: 55,
     },
-    {direction: "--", time: "--", color: "#006DFF", hours: "", minutes: ""},
     {
         direction: "Молодёж.",
         time: "09:00",
@@ -168,7 +160,6 @@ export const weekDays = [
         hours: 9,
         minutes: 0,
     },
-    {direction: "--", time: "--", color: "#006DFF", hours: "", minutes: ""},
     {
         direction: "Молодёж.",
         time: "09:20",
@@ -176,7 +167,6 @@ export const weekDays = [
         hours: 9,
         minutes: 20,
     },
-    {direction: "--", time: "--", color: "#006DFF", hours: "", minutes: ""},
     {
         direction: "Одинцово",
         time: "09:25",
@@ -198,7 +188,6 @@ export const weekDays = [
         hours: 9,
         minutes: 30,
     },
-    {direction: "--", time: "--", color: "#006DFF", hours: "", minutes: ""},
     {
         direction: "Молодёж.",
         time: "09:45",
@@ -206,7 +195,6 @@ export const weekDays = [
         hours: 9,
         minutes: 45,
     },
-    {direction: "--", time: "--", color: "#006DFF", hours: "", minutes: ""},
     {
         direction: "Молодёж.",
         time: "09:50",
@@ -214,7 +202,6 @@ export const weekDays = [
         hours: 9,
         minutes: 50,
     },
-    {direction: "--", time: "--", color: "#006DFF", hours: "", minutes: ""},
     {
         direction: "Одинцово",
         time: "10:25",
@@ -236,7 +223,6 @@ export const weekDays = [
         hours: 10,
         minutes: 35,
     },
-    {direction: "--", time: "--", color: "#006DFF", hours: "", minutes: ""},
     {
         direction: "Одинцово",
         time: "10:55",
@@ -272,7 +258,6 @@ export const weekDays = [
         hours: 11,
         minutes: 15,
     },
-    {direction: "--", time: "--", color: "#006DFF", hours: "", minutes: ""},
     {
         direction: "Молодёж.",
         time: "11:25",
@@ -280,7 +265,6 @@ export const weekDays = [
         hours: 11,
         minutes: 25,
     },
-    {direction: "--", time: "--", color: "#006DFF", hours: "", minutes: ""},
     {
         direction: "Молодёж.",
         time: "11:35",
@@ -352,3 +336,8 @@ export const weekDays = [
         minutes: 30,
     },
 ];
+
+export const saturday = [];
+export const sunday = [];
+
+// 14:30
