@@ -1,10 +1,6 @@
 import {weekDays} from "./data.js";
 const timetableSection = document.querySelector(".timetable");
 
-let date = new Date();
-let dateHours = date.getHours();
-let dateMinutes = date.getMinutes();
-console.log(dateHours);
 /*
 function displayLeft() {
     for (let i = 0; i < weekDays.length; i++) {
@@ -49,6 +45,9 @@ function displayLeft() {
 
 function getTimetable() {
     setTimeout(() => {
+        let date = new Date();
+        let dateHours = date.getHours();
+        let dateMinutes = date.getMinutes();
         let output = "";
         weekDays.forEach((weekDay) => {
             let tempDifference = 0;
@@ -71,13 +70,13 @@ function getTimetable() {
 
             switch (true) {
                 case formatHours > 0:
-                    difference = `${Math.floor(tempDifference / 60) - 1}ч ${tempDifference % 60}мин`;
+                    difference = `${Math.floor(tempDifference / 60)}ч ${tempDifference % 60}мин`;
                     break;
                 case formatHours == 0:
-                    difference = `${tempDifference % 60}мин`;
+                    difference = `${tempDifference % 60} мин`;
                     break;
                 case formatHours < 0:
-                    difference = `${Math.abs(Math.floor(tempDifference / 60)) - 1}ч ${Math.abs(
+                    difference = `${Math.abs(Math.floor(tempDifference / 60))}ч ${Math.abs(
                         tempDifference % 60,
                     )} мин. назад`;
                     break;
@@ -86,22 +85,20 @@ function getTimetable() {
                     break;
             }
 
-            output += `<div style="background-color:${weekDay.color}" class="card">
+            if (formatHours < 0) {
+                output = "";
+            } else {
+                output += `<div style="background-color:${weekDay.color}" class="card">
             <div class="directionAndTimeLeft">
                 <div class="direction">${weekDay.direction}</div>
                 <div class="timeLeft">${difference}</div>
             </div>
             <div class="time">${weekDay.time}</div>
         </div>`;
+            }
         });
         timetableSection.innerHTML = output;
-    }, 1000);
+    }, 100);
 }
 
-getTimetable();
-/*
-function formatZeroes(time) {
-    time = time.toString();
-    return time.length < 2 ? "0" + time : time;
-}
-*/
+setInterval(getTimetable, 1000);

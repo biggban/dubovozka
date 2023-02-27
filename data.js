@@ -332,7 +332,7 @@ export const weekDays = [
         direction: "Молодёж.",
         time: "14:30",
         color: "#006DFF",
-        hours: 14,
+        hours: 18,
         minutes: 30,
     },
 ];
