@@ -15,14 +15,39 @@ h1 {
 }
 
 .directions {
-    display: grid;
+    display: flex;
     grid-template-columns: repeat(2, 1fr);
-    gap: 24px;
+    align-items: flex-start;
+    justify-content: space-around;
+    color: var(--white-color);
+    height: 40px;
+    background-color: #202020;
+    margin: 15px 0px;
+    border-radius: 10px;
+    padding: 3px;
+    font-size: 4vw;
 }
 
-.directions > p {
-    color: var(--white-color);
-    font-size: 4vw;
+.toMoscow {
+    width: 49.5%;
+    height: 100%;
+    border-radius: 9px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.toDubki {
+    width: 49.5%;
+    height: 100%;
+    border-radius: 9px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.chosen {
+    background-color: #2a2a2a;
 }
 
 /* Timetable section */
