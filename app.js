@@ -35,6 +35,7 @@ toMoscow[0].addEventListener("click", () => {
     day = day.filter((d) => {
         return d.whereTo == "toMoscow";
     });
+
     setInterval(() => getTimetable2(day), 1000);
     if (toMoscow[0].classList.contains("chosen")) {
         return null;
@@ -49,6 +50,8 @@ toDubki[0].addEventListener("click", () => {
         return d.whereTo == "toDubki";
     });
     console.log(day);
+    clearInterval(getTimetable1);
+    clearInterval(getTimetable2);
     setInterval(() => getTimetable2(day), 1000);
     if (toDubki[0].classList.contains("chosen")) {
         return null;
@@ -178,6 +181,6 @@ function getTimetable2(dayOfWeek) {
 }
 
 calculateDayOfWeek1();
-setInterval(() => getTimetable1(day), 1000);
+// setInterval(() => getTimetable1(day), 1000);
 
-setInterval(calculateDayOfWeek2, 86400000);
+// setInterval(calculateDayOfWeek2, 86400000);
