@@ -1,12 +1,24 @@
 import {timeTable} from "./data.js";
-const timetableSection = document.querySelector(".timetable");
-let chosenDirection = document.getElementsByClassName("chosen");
+const timetableSection = document.getElementById("timetable");
+// let chosenDirection = document.getElementsByClassName("chosen");
 let toMoscow = document.getElementsByClassName("toMoscow");
 let toDubki = document.getElementsByClassName("toDubki");
 
 let day;
 
-function calculateDayOfWeek() {
+function calculateDayOfWeek1() {
+    let dayOfWeekDate = new Date();
+    let tempDayWeek = dayOfWeekDate.getDay();
+    if (tempDayWeek == 5) {
+        return (day = timeTable.saturday);
+    } else if (tempDayWeek == 6) {
+        return (day = timeTable.sunday);
+    } else {
+        return (day = timeTable.weekDays);
+    }
+}
+
+function calculateDayOfWeek2() {
     let dayOfWeekDate = new Date();
     let tempDayWeek = dayOfWeekDate.getDay();
     if (tempDayWeek == 5) {
@@ -19,11 +31,11 @@ function calculateDayOfWeek() {
 }
 
 toMoscow[0].addEventListener("click", () => {
-    calculateDayOfWeek();
+    calculateDayOfWeek2();
     day = day.filter((d) => {
         return d.whereTo == "toMoscow";
     });
-    getTimetable2(day);
+    setInterval(() => getTimetable2(day), 1000);
     if (toMoscow[0].classList.contains("chosen")) {
         return null;
     } else {
@@ -32,12 +44,12 @@ toMoscow[0].addEventListener("click", () => {
     }
 });
 toDubki[0].addEventListener("click", () => {
-    calculateDayOfWeek();
+    calculateDayOfWeek2();
     day = day.filter((d) => {
         return d.whereTo == "toDubki";
     });
     console.log(day);
-    getTimetable2(day);
+    setInterval(() => getTimetable2(day), 1000);
     if (toDubki[0].classList.contains("chosen")) {
         return null;
     } else {
@@ -53,13 +65,12 @@ function getTimetable1(dayOfWeek) {
         let date = new Date();
         let dateHours = date.getHours();
         let dateMinutes = date.getMinutes();
-        let output = "";
+        let output;
         // Filtration works
         dayOfWeek = dayOfWeek.filter((d) => {
             return d.whereTo == "toMoscow";
         });
 
-        console.log(dayOfWeek);
         dayOfWeek.forEach((weekDay) => {
             let tempDifference = 0;
             let difference;
@@ -74,7 +85,7 @@ function getTimetable1(dayOfWeek) {
             let formatHours;
 
             if (tempDifference != undefined) {
-                formatHours = Math.floor(tempDifference / 60) - 1;
+                formatHours = Math.floor(tempDifference / 60);
             } else {
                 formatHours = undefined;
             }
@@ -95,9 +106,7 @@ function getTimetable1(dayOfWeek) {
                     break;
             }
 
-            if (formatHours < 0) {
-                output = "";
-            } else {
+            if (formatHours >= 0) {
                 output += `<div style="background-color:${weekDay.color}" class="card">
             <div class="directionAndTimeLeft">
                 <div class="direction">${weekDay.direction}</div>
@@ -105,10 +114,10 @@ function getTimetable1(dayOfWeek) {
             </div>
             <div class="time">${weekDay.time}</div>
         </div>`;
+            } else {
+                output = "";
             }
         });
-        // Buttons
-
         timetableSection.innerHTML = output;
     }, 100);
 }
@@ -120,7 +129,6 @@ function getTimetable2(dayOfWeek) {
         let dateMinutes = date.getMinutes();
         let output = "";
 
-        console.log(dayOfWeek);
         dayOfWeek.forEach((weekDay) => {
             let tempDifference = 0;
             let difference;
@@ -135,7 +143,7 @@ function getTimetable2(dayOfWeek) {
             let formatHours;
 
             if (tempDifference != undefined) {
-                formatHours = Math.floor(tempDifference / 60) - 1;
+                formatHours = Math.floor(tempDifference / 60);
             } else {
                 formatHours = undefined;
             }
@@ -155,10 +163,9 @@ function getTimetable2(dayOfWeek) {
                     difference = "По прибытию";
                     break;
             }
+            console.log(formatHours);
 
-            if (formatHours < 0) {
-                output = "";
-            } else {
+            if (formatHours >= 0) {
                 output += `<div style="background-color:${weekDay.color}" class="card">
             <div class="directionAndTimeLeft">
                 <div class="direction">${weekDay.direction}</div>
@@ -166,16 +173,15 @@ function getTimetable2(dayOfWeek) {
             </div>
             <div class="time">${weekDay.time}</div>
         </div>`;
+            } else {
+                output = "";
             }
         });
-        // Buttons
-
         timetableSection.innerHTML = output;
     }, 100);
 }
 
-calculateDayOfWeek();
-getTimetable1(day);
+calculateDayOfWeek1();
+setInterval(() => getTimetable1(day), 1000);
 
-// setInterval(calculateDayOfWeek, 1);
-// setInterval(() => getTimetable(day), 1000);
+setInterval(calculateDayOfWeek2, 86400000);
