@@ -184,3 +184,5 @@ calculateDayOfWeek1();
 // setInterval(() => getTimetable1(day), 1000);
 
 // setInterval(calculateDayOfWeek2, 86400000);
+
+// set an ids to intervals
