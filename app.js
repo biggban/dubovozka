@@ -181,6 +181,7 @@ function getTimetable2(dayOfWeek) {
 }
 
 calculateDayOfWeek1();
+getTimetable1(day);
 // setInterval(() => getTimetable1(day), 1000);
 
 // setInterval(calculateDayOfWeek2, 86400000);
