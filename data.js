@@ -596,6 +596,8 @@ export const timeTable = {
             color: "#202020",
             hours: "",
             minutes: "",
+            tempH: 7,
+            tempM: 5,
             whereTo: "toDubki",
         },
         {
@@ -604,6 +606,8 @@ export const timeTable = {
             color: "#202020",
             hours: "",
             minutes: "",
+            tempH: 7,
+            tempM: 40,
             whereTo: "toDubki",
         },
         {
@@ -611,7 +615,7 @@ export const timeTable = {
             time: "08:05",
             color: "#006DFF",
             hours: 8,
-            minutes: 5,
+            minutes: 25,
             whereTo: "toDubki",
         },
         {
@@ -620,6 +624,8 @@ export const timeTable = {
             color: "#202020",
             hours: "",
             minutes: "",
+            tempH: 7,
+            tempM: 55,
             whereTo: "toDubki",
         },
         {
@@ -628,6 +634,8 @@ export const timeTable = {
             color: "#202020",
             hours: "",
             minutes: "",
+            tempH: 8,
+            tempM: 5,
             whereTo: "toDubki",
         },
         {
@@ -636,6 +644,8 @@ export const timeTable = {
             color: "#202020",
             hours: "",
             minutes: "",
+            tempH: 8,
+            tempM: 35,
             whereTo: "toDubki",
         },
         {
@@ -644,6 +654,8 @@ export const timeTable = {
             color: "#202020",
             hours: "",
             minutes: "",
+            tempH: 9,
+            tempM: 5,
             whereTo: "toDubki",
         },
         {
@@ -652,6 +664,8 @@ export const timeTable = {
             color: "#202020",
             hours: "",
             minutes: "",
+            tempH: 9,
+            tempM: 45,
             whereTo: "toDubki",
         },
         {
@@ -660,6 +674,8 @@ export const timeTable = {
             color: "#202020",
             hours: "",
             minutes: "",
+            tempH: 10,
+            tempM: 45,
             whereTo: "toDubki",
         },
         {
@@ -668,6 +684,8 @@ export const timeTable = {
             color: "#202020",
             hours: "",
             minutes: "",
+            tempH: 11,
+            tempM: 15,
             whereTo: "toDubki",
         },
         {

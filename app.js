@@ -201,7 +201,7 @@ function getTimetable2(dayOfWeek) {
         } else {
             tempDifference = undefined;
         }
-
+        /*
         let formatHours;
 
         if (tempDifference != undefined) {
@@ -209,24 +209,29 @@ function getTimetable2(dayOfWeek) {
         } else {
             formatHours = undefined;
         }
+        */
         switch (true) {
-            case formatHours > 0:
+            case tempDifference > 0:
                 difference = `${Math.floor(tempDifference / 60)}ч ${tempDifference % 60}мин`;
                 break;
-            case formatHours == 0:
+            case tempDifference == 0:
                 difference = `${tempDifference % 60} мин`;
                 break;
-            case formatHours < 0:
+            case tempDifference < 0:
                 difference = `${Math.abs(Math.floor(tempDifference / 60))}ч ${Math.abs(
                     tempDifference % 60,
                 )} мин. назад`;
                 break;
-            case formatHours == undefined:
+            case tempDifference == undefined:
                 difference = "По прибытию";
+                let undefinedHours = weekDay.tempH;
+                let undefinedMinutes = weekDay.tempM;
+                tempDifference = undefinedHours * 60 + undefinedMinutes - dateHours * 60 - dateMinutes;
+                console.log(tempDifference);
                 break;
         }
 
-        if (formatHours >= 0 || formatHours == undefined) {
+        if (tempDifference >= -1 || tempDifference == undefined) {
             output += `<div style="background-color:${weekDay.color}" class="card">
             <div class="directionAndTimeLeft">
                 <div class="direction">${weekDay.direction}</div>
