@@ -1006,27 +1006,7 @@ export const timeTable = {
             color: "#006DFF",
             hours: 6,
             minutes: 30,
-        },
-        {
-            direction: "Одинцово",
-            time: "06:30",
-            color: "#006DFF",
-            hours: 6,
-            minutes: 30,
-        },
-        {
-            direction: "Одинцово",
-            time: "06:30",
-            color: "#006DFF",
-            hours: 6,
-            minutes: 30,
-        },
-        {
-            direction: "Одинцово",
-            time: "06:30",
-            color: "#006DFF",
-            hours: 6,
-            minutes: 30,
+            whereTo: "toMoscow",
         },
     ],
     sunday: [
