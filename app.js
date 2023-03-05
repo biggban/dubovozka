@@ -5,25 +5,17 @@ let toMoscow = document.getElementsByClassName("toMoscow");
 let toDubki = document.getElementsByClassName("toDubki");
 
 let day;
+let intrv1;
+let intrv2;
+let intrv3;
 
-function calculateDayOfWeek1() {
+function calculateDayOfWeek() {
     let dayOfWeekDate = new Date();
     let tempDayWeek = dayOfWeekDate.getDay();
+    console.log(tempDayWeek);
     if (tempDayWeek == 5) {
         return (day = timeTable.saturday);
-    } else if (tempDayWeek == 6) {
-        return (day = timeTable.sunday);
-    } else {
-        return (day = timeTable.weekDays);
-    }
-}
-
-function calculateDayOfWeek2() {
-    let dayOfWeekDate = new Date();
-    let tempDayWeek = dayOfWeekDate.getDay();
-    if (tempDayWeek == 5) {
-        return (day = timeTable.saturday);
-    } else if (tempDayWeek == 6) {
+    } else if (tempDayWeek == 0) {
         return (day = timeTable.sunday);
     } else {
         return (day = timeTable.weekDays);
@@ -31,12 +23,18 @@ function calculateDayOfWeek2() {
 }
 
 toMoscow[0].addEventListener("click", () => {
-    calculateDayOfWeek2();
+    calculateDayOfWeek();
+    clearInterval(intrv1);
+    clearInterval(intrv2);
+    clearInterval(intrv3);
+    console.log(intrv1, intrv2, intrv3);
+    calcDay();
+    UpdateWithoutFilter();
+
     day = day.filter((d) => {
         return d.whereTo == "toMoscow";
     });
 
-    setInterval(() => getTimetable2(day), 1000);
     if (toMoscow[0].classList.contains("chosen")) {
         return null;
     } else {
@@ -45,14 +43,16 @@ toMoscow[0].addEventListener("click", () => {
     }
 });
 toDubki[0].addEventListener("click", () => {
-    calculateDayOfWeek2();
+    calculateDayOfWeek();
+    clearInterval(intrv1);
+    clearInterval(intrv2);
+    clearInterval(intrv3);
+    calcDay();
+    UpdateWithoutFilter();
     day = day.filter((d) => {
         return d.whereTo == "toDubki";
     });
-    console.log(day);
-    clearInterval(getTimetable1);
-    clearInterval(getTimetable2);
-    setInterval(() => getTimetable2(day), 1000);
+
     if (toDubki[0].classList.contains("chosen")) {
         return null;
     } else {
@@ -61,7 +61,7 @@ toDubki[0].addEventListener("click", () => {
     }
 });
 
-// Get timetable
+// Get timetable with filter first
 
 function getTimetable1(dayOfWeek) {
     let date = new Date();
@@ -72,7 +72,6 @@ function getTimetable1(dayOfWeek) {
     dayOfWeek = dayOfWeek.filter((d) => {
         return d.whereTo == "toMoscow";
     });
-
     dayOfWeek.forEach((weekDay) => {
         let tempDifference = 0;
         let difference;
@@ -120,9 +119,11 @@ function getTimetable1(dayOfWeek) {
             output = "";
         }
     });
+
     timetableSection.innerHTML = output;
 }
 
+// Get timetable without the filter
 function getTimetable2(dayOfWeek) {
     let date = new Date();
     let dateHours = date.getHours();
@@ -163,7 +164,6 @@ function getTimetable2(dayOfWeek) {
                 difference = "По прибытию";
                 break;
         }
-        console.log(formatHours);
 
         if (formatHours >= 0) {
             output += `<div style="background-color:${weekDay.color}" class="card">
@@ -180,8 +180,29 @@ function getTimetable2(dayOfWeek) {
     timetableSection.innerHTML = output;
 }
 
-calculateDayOfWeek1();
-getTimetable1(day);
+function updateWithFilter() {
+    intrv1 = setInterval(() => {
+        getTimetable1(day);
+    }, 1000);
+}
+function UpdateWithoutFilter() {
+    intrv2 = setInterval(() => {
+        getTimetable2(day);
+    }, 1000);
+}
+
+// Calculate Day of week
+function calcDay() {
+    intrv2 = setInterval(() => {
+        calculateDayOfWeek(day);
+    }, 86400000);
+}
+
+calculateDayOfWeek();
+
+updateWithFilter();
+calcDay();
+
 // setInterval(() => getTimetable1(day), 1000);
 
 // setInterval(calculateDayOfWeek2, 86400000);
