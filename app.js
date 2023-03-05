@@ -9,10 +9,11 @@ let intrv1;
 let intrv2;
 let intrv3;
 
+window.onload = clearAllIntervals();
+
 function calculateDayOfWeek() {
     let dayOfWeekDate = new Date();
     let tempDayWeek = dayOfWeekDate.getDay();
-    console.log(tempDayWeek);
     if (tempDayWeek == 5) {
         return (day = timeTable.saturday);
     } else if (tempDayWeek == 0) {
@@ -253,9 +254,16 @@ function UpdateWithoutFilter() {
 
 // Calculate Day of week
 function calcDay() {
+    clearInterval(intrv2);
     intrv2 = setInterval(() => {
         calculateDayOfWeek();
-    }, 86400000);
+    }, 60000);
+}
+
+function clearAllIntervals() {
+    clearInterval(intrv1);
+    clearInterval(intrv2);
+    clearInterval(intrv3);
 }
 
 calculateDayOfWeek();
