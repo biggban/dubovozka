@@ -8,6 +8,8 @@ let day;
 let intrv1;
 let intrv2;
 let intrv3;
+let intrv4;
+let intrv5;
 
 window.onload = clearAllIntervals();
 
@@ -28,12 +30,14 @@ toMoscow[0].addEventListener("click", () => {
     clearInterval(intrv1);
     clearInterval(intrv2);
     clearInterval(intrv3);
-    calcDay();
+    clearInterval(intrv4);
+    clearInterval(intrv5);
+    calcDayMoscow();
     UpdateWithoutFilter();
 
-    day = day.filter((d) => {
-        return d.whereTo == "toMoscow";
-    });
+    // day = day.filter((d) => {
+    //     return d.whereTo == "toMoscow";
+    // });
 
     if (toMoscow[0].classList.contains("chosen")) {
         return null;
@@ -47,7 +51,9 @@ toDubki[0].addEventListener("click", () => {
     clearInterval(intrv1);
     clearInterval(intrv2);
     clearInterval(intrv3);
-    calcDay();
+    clearInterval(intrv4);
+    clearInterval(intrv5);
+    calcDayDubki();
     UpdateWithoutFilter();
     day = day.filter((d) => {
         return d.whereTo == "toDubki";
@@ -201,7 +207,7 @@ function getTimetable2(dayOfWeek) {
         } else {
             tempDifference = undefined;
         }
-        /*
+
         let formatHours;
 
         if (tempDifference != undefined) {
@@ -209,29 +215,28 @@ function getTimetable2(dayOfWeek) {
         } else {
             formatHours = undefined;
         }
-        */
         switch (true) {
-            case tempDifference > 0:
+            case formatHours > 0:
                 difference = `${Math.floor(tempDifference / 60)}ч ${tempDifference % 60}мин`;
                 break;
-            case tempDifference == 0:
+            case formatHours == 0:
                 difference = `${tempDifference % 60} мин`;
                 break;
-            case tempDifference < 0:
+            case formatHours < 0:
                 difference = `${Math.abs(Math.floor(tempDifference / 60))}ч ${Math.abs(
                     tempDifference % 60,
                 )} мин. назад`;
                 break;
-            case tempDifference == undefined:
+            case formatHours == undefined:
                 difference = "По прибытию";
-                let undefinedHours = weekDay.tempH;
-                let undefinedMinutes = weekDay.tempM;
-                tempDifference = undefinedHours * 60 + undefinedMinutes - dateHours * 60 - dateMinutes;
-                console.log(tempDifference);
+                let tempH = weekDay.tempH;
+                let tempM = weekDay.tempM;
+                let tempD = tempH * 60 + tempM - dateHours * 60 - dateMinutes;
+                formatHours = Math.floor(tempD / 60);
                 break;
         }
 
-        if (tempDifference >= -1 || tempDifference == undefined) {
+        if (formatHours >= 0 || formatHours == undefined) {
             output += `<div style="background-color:${weekDay.color}" class="card">
             <div class="directionAndTimeLeft">
                 <div class="direction">${weekDay.direction}</div>
@@ -259,21 +264,43 @@ function UpdateWithoutFilter() {
 
 // Calculate Day of week
 function calcDay() {
-    clearInterval(intrv2);
-    intrv2 = setInterval(() => {
+    clearInterval(intrv3);
+    intrv3 = setInterval(() => {
         calculateDayOfWeek();
-    }, 60000);
+    }, 5000);
+}
+function calcDayMoscow() {
+    clearInterval(intrv3);
+    clearInterval(intrv5);
+    intrv4 = setInterval(() => {
+        calculateDayOfWeek();
+        day = day.filter((d) => {
+            return d.whereTo == "toMoscow";
+        });
+    }, 1000);
+}
+function calcDayDubki() {
+    clearInterval(intrv3);
+    clearInterval(intrv4);
+    intrv5 = setInterval(() => {
+        calculateDayOfWeek();
+        day = day.filter((d) => {
+            return d.whereTo == "toDubki";
+        });
+    }, 1000);
 }
 
 function clearAllIntervals() {
     clearInterval(intrv1);
     clearInterval(intrv2);
     clearInterval(intrv3);
+    clearInterval(intrv4);
+    clearInterval(intrv5);
 }
 
 calculateDayOfWeek();
 calcDay();
-updateWithFilter(day);
+updateWithFilter();
 
 // setInterval(() => getTimetable1(day), 1000);
 
